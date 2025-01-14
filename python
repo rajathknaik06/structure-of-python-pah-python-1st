@@ -1,0 +1,31 @@
+""" Ella, an avid TV show enthusiast, is planning a binge-watching marathon for a new series. She has a specific routine: after watching a set number of episodes, she takes a short break.
+
+
+
+She is provided with the following information:
+
+Each episode of the series has a fixed duration of 45 minutes.
+After a certain number of episodes, there is a break of 15 minutes.
+
+
+Ella wants to know the total time she will need to watch the entire series, including the breaks. Your task is to help Ella by calculating the total viewing time.
+
+Input format :
+The first line of input consists of an integer E, representing the total number of episodes in the series.
+
+The second line consists of an integer B, representing the number of episodes watched before taking a break.
+
+Output format :
+The output prints an integer representing the total viewing time required to watch the entire series, including the breaks."""
+
+total_episodes = int(input())
+episodes_before_break = int(input())
+episode_duration = 45 # in minutes
+break_duration = 15   # in minutes
+
+full_breaks = (total_episodes - 1) // episodes_before_break # Calculate full breaks
+remaining_episodes = total_episodes - (full_breaks * episodes_before_break) # Calculate remaining episodes
+
+total_duration = (full_breaks * (episodes_before_break * episode_duration + break_duration) + (remaining_episodes * episode_duration)) * (full_breaks > 0) + (total_episodes * episode_duration) * (full_breaks == 0)
+
+print(f"{total_duration} minutes")
